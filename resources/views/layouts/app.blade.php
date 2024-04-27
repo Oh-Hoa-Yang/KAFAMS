@@ -3,8 +3,31 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/modern.css" rel="stylesheet">
 
     <!-- CSRF Token -->
+
+  <!--
+    <div class="splash active">
+    <div class="splash-icon"></div>
+  </div>
+
+  <div class="wrapper">
+    <nav id="sidebar" class="sidebar">
+      <ul class="sidebar-nav"><br>
+        <li class="sidebar-item active">
+          <a class="sidebar-link" href="/">
+            <i class="align-middle me-2 far fa-fw fa-user"></i><span class="align-middle">Profile</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="sidebar-link" href=""></a>
+        </li>
+      </ul>
+    </nav>
+  </div> -->
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'KAFAMS') }}</title>
@@ -19,6 +42,12 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+          <button class="btn"><i class="bi bi-list">
+            <ul class="sidebar-nav">
+
+
+            </ul>
+            </i></button>
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}"> 
                     {{ config('app.name', 'KAFAMS') }}
@@ -26,7 +55,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
