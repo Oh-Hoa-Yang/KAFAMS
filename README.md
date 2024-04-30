@@ -12,5 +12,10 @@ Open XAMPP from here on (Apache & MySQL services)
 7. Run "php artisan migrate:fresh" in terminal
 8. Run "npm install -g pnpm" on your PC's command prompt/terminal/powershell (Ensure you have npm installed in PC)
 9. Run "pnpm i" in terminal
-10. Run "pnpm run dev" in terminal
-11. Run "php artisan serve" to run local server
+10. Run "pnpm i bootstrap-icons" in terminal
+11. Run "pnpm run dev" in terminal
+12. Run "php artisan serve" to run local server
+
+## Post-Setup
+
+Run "pnpm run dev" & "php artisan serve" every time you want to start local server
