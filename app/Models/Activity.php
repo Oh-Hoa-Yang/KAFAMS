@@ -16,4 +16,9 @@ class Activity extends Model
         'startTime',
         'endTime',
     ];
+
+    public function participations()
+    {
+        return $this->hasMany(Participation::class, 'activity_id', 'id');
+    }
 }

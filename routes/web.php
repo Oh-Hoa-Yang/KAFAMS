@@ -12,6 +12,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(['role:user']);
 
+Route::post('manageActivity/{activity}/participate', [ActivityController::class, 'participate'])
+    ->name('manageActivity.participate');
+
 Route::resources([
-    'manage-activities' => ActivityController::class,
+    'manageActivity' => ActivityController::class,
 ]);

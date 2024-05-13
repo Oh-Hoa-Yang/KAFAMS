@@ -19,3 +19,4 @@ Open XAMPP from here on (Apache & MySQL services)
 ## Post-Setup
 
 Run "pnpm run dev" & "php artisan serve" every time you want to start local server
+Run "php artisan migrate:fresh --seed" to seed database and fetch/execute migration scripts (Try to do this after every pull/clone)

@@ -7,7 +7,7 @@
                 <h2><b>Add Activity</b></h2>
             </div>
         </div>
-        <form action="{{ route('manage-activities.store') }}" method="POST">
+        <form action="{{ route('manageActivity.store') }}" method="POST">
             @csrf
             <div class="row">
                 <div class="col-md-6">

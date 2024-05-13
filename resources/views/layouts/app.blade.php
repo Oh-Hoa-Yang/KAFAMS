@@ -77,7 +77,7 @@
                                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('manage-activities.index') }}">Activity List</a>
+                                    <a class="nav-link" href="{{ route('manageActivity.index') }}">Activity List</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Student Results</a>
