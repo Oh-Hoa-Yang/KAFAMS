@@ -47,23 +47,23 @@
         @auth
             <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
                 <!--
-                                <button class="btn"><i class="bi bi-list">
-                                  <ul class="sidebar-nav">
+                                        <button class="btn"><i class="bi bi-list">
+                                          <ul class="sidebar-nav">
 
 
-                                  </ul>
-                                  </i></button>
+                                          </ul>
+                                          </i></button>
 
-                                -->
+                                        -->
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/home') }}">
                         {{ config('app.name', 'KAFAMS') }}
                     </a>
                     <!--
-                                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                                          <span class="navbar-toggler-icon"></span>
-                                      </button>
-                                    -->
+                                              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                                                  <span class="navbar-toggler-icon"></span>
+                                              </button>
+                                            -->
                     <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
                         aria-labelledby="offcanvasDarkNavbarLabel">
                         <div class="offcanvas-header">
@@ -160,6 +160,7 @@
             @yield('content')
         </main>
     </div>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </body>
 
 </html>

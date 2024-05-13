@@ -9,19 +9,22 @@ class ActivityController extends Controller
 {
     public function index()
     {
-        return view('manage-activities.activityList');
+        $datas = Activity::paginate(10);
+
+        return view('manage-activities.activityList', compact('datas'));
     }
 
     public function create()
     {
+        return view('manage-activities.addActivity');
     }
 
     public function store(Request $request)
     {
-    }
+        Activity::create($request->all());
 
-    public function show(activity $activity)
-    {
+        return redirect()->route('manage-activities.index')
+            ->with('Success', 'New activity successfully created!');
     }
 
     public function edit(Activity $activity)
@@ -33,6 +36,15 @@ class ActivityController extends Controller
     }
 
     public function destroy(Activity $activity)
+    {
+    }
+    public function show(activity $activity)
+    {
+    }
+    public function participate(activity $activity)
+    {
+    }
+    public function participationList(activity $activity)
     {
     }
 }
