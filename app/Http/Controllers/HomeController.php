@@ -23,6 +23,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if (auth()->user()->role == 'user')
+        {
+          return view('home');
+        }
+        elseif (auth()->user()->role == 'teacher')
+        {
+          return view('teacher');
+        }
+        elseif (auth()->user()->role == 'admin')
+        {
+          return view('admin');
+        }
+        
     }
 }
