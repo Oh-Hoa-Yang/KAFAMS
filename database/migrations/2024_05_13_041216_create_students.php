@@ -15,6 +15,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('stdName');
+            $table->string('motherIC');
+            $table->string('fatherIC');
+            $table->string('stdIC');
+            $table->string('stdBirthCert');
+            $table->string('status');
             $table->timestamps();
         });
     }

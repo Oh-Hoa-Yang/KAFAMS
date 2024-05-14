@@ -23,18 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role == 'user')
-        {
-          return view('home');
-        }
-        elseif (auth()->user()->role == 'teacher')
-        {
-          return view('teacher');
-        }
-        elseif (auth()->user()->role == 'admin')
-        {
-          return view('admin');
-        }
-        
+          return view('manageAccountRegistration.home');
     }
 }
