@@ -97,7 +97,7 @@
                 @endif
                 @if (auth()->user()->role == 'admin')
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Teacher Accounts</a>
+                    <a class="nav-link" href="/teacherAccount">Teacher Accounts</a>
                   </li>
                 @endif
 

@@ -11,6 +11,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/teacherAccount',[App\Http\Controllers\TeacherController::class,'index']);
 
 
 Route::post('manageActivity/{activity}/participate', [ActivityController::class, 'participate'])
