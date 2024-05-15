@@ -25,6 +25,7 @@ class UserSeeder extends Seeder
           'name' => 'Teacher',
           'email' => 'teacher@gmail.com',
           'role' => 'teacher',
+          'staffID'=> 'AB1234',
           'password' => bcrypt('qweasdzxc'),
           'email_verified_at' => '2024-05-13 17:07:11'
         ],
