@@ -43,8 +43,7 @@ class TeacherController extends Controller
         'role'=>$validated['role'],
       ]);
 
-      return redirect()->route('manageAccountRegistration.index')
-      ->with('sucess', 'Teacher Account Is Added!');
+      return redirect()->route('manageAccountRegistration.index')->with('success', 'Teacher Account Is Added!');
     }
 
 

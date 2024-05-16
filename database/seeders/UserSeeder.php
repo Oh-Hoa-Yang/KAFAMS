@@ -32,6 +32,7 @@ class UserSeeder extends Seeder
         [
           'name' => 'User',
           'email' => 'user@gmail.com',
+          'role' => 'user',
           'password' => bcrypt('qweasdzxc'),
           'email_verified_at' => '2024-05-13 17:07:11'
         ]

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 
 Route::get('/', function () {
@@ -11,12 +12,8 @@ Route::get('/', function () {
 
 Auth::routes();
 //return home
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
-//ADMIN
-//Admin view teacher account register page 
-// Route::get('/teacherAccount',[App\Http\Controllers\TeacherController::class,'index']);
-
-// Route::post('manageTeacherAccount/{user}/')
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('students/admin', [StudentController::class, 'indexAdmin'])->name('students.indexAdmin'); //Don't shift this to the group function
 
 
 
@@ -28,4 +25,12 @@ Route::post('manageActivity/{activity}/participate', [ActivityController::class,
 Route::resources([
     'manageActivity' => ActivityController::class,
     'manageAccountRegistration' => TeacherController::class,
+    'manageStdIDVerification' => StudentController::class,
 ]);
+
+Route::middleware(['auth'])->group(function () {
+  Route::get('/home',[App\Http\Controllers\HomeController::class,'index'])->name('home');
+  Route::resource('students', StudentController::class);
+  //AdminIndex
+  
+});

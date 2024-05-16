@@ -84,15 +84,15 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">KAFA Bulletin</a>
-                </li>
+                </li>F
                 @if (auth()->user()->role == 'user')
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Student Registration</a> <!--only viewed for staff-->
+                    <a class="nav-link" href="{{ route('manageStdIDVerification.index') }}">Student Registration</a> <!--only viewed for staff-->
                   </li>
                 @endif
                 @if (auth()->user()->role == 'admin')
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Student Verification</a> <!--only viewed for staff-->
+                    <a class="nav-link" href="{{ route('students.indexAdmin')}}">Student Verification</a> <!--only viewed for staff-->
                   </li>
                 @endif
                 @if (auth()->user()->role == 'admin')
@@ -100,7 +100,7 @@
                     <a class="nav-link" href="{{ route('manageAccountRegistration.index') }}">Teacher Accounts</a>
                   </li>
                 @endif
-
+F
               </ul>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->

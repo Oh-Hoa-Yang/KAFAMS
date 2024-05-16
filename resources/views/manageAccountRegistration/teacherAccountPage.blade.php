@@ -48,24 +48,30 @@
 
       </div>
 
+      <div class="d-flex flex-row-reverse">
+        {{ $datas->links('') }}
+    </div>
+
+
       </tbody>
       </table>
+    </div>
+    <div style="position: fixed; left: 50%; transform: translate(-50%, -50%);)">
+      @if (session('failure'))
+        <div class="alert alert-danger" role="alert">
+          {{ session('failure') }}
+        </div>
+      @endif <!--Red pop up message-->
+  
+      @if (session('success'))
+        <div class="alert alert-success" role="alert">
+          {{ session('success') }}
+        </div>
+      @endif <!--Green pop up message-->
     </div>
   </div>
   </div>
 
 
-  <div style="position: fixed; left: 50%; transform: translate(-50%, -50%);)">
-    @if (session('failure'))
-      <div class="alert alert-danger">
-        {{ session('failure') }}
-      </div>
-    @endif <!--Red pop up message-->
-
-    @if (session('success'))
-      <div class="alert alert-success">
-        {{ session('success') }}
-      </div>
-    @endif <!--Green pop up message-->
-  </div>
+  
 @endsection
