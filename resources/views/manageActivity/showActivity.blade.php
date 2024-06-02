@@ -56,6 +56,11 @@
                     </div>
                 </div>
                 <!--Only user/parents can participate -->
+                @php
+                    $today = \Carbon\Carbon::today();
+                    $activityDate = \Carbon\Carbon::parse($activity['activityDate']);
+                @endphp
+
                 @if (auth()->user()->role == 'user')
                     <form id="participationForm"
                         action="{{ route('manageActivity.participate', ['activity' => $activity['id']]) }}" method="POST">
@@ -76,7 +81,13 @@
         <div class="row justify-content-end">
             <div class="col-md-2">
                 <button type="button" class="btn btn-outline-dark mr-2" onclick="window.history.back()">Back</button>
-                <button type="submit" class="btn" style="background-color:#647687; color:white;">Participate</button>
+                @if ($activityDate->gt($today))
+                    <button type="submit" class="btn"
+                        style="background-color:#647687; color:white;">Participate</button>
+                @else
+                    <button type="button" class="btn" style="background-color:#647687; color:white;"
+                        disabled>Participate</button>
+                @endif
             </div>
         </div>
         </form>

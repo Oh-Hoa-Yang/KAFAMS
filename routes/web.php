@@ -12,10 +12,8 @@ Route::get('/', function () {
 
 Auth::routes();
 //return home
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('students/admin', [StudentController::class, 'indexAdmin'])->name('students.indexAdmin'); //Don't shift this to the group function
-
-
 
 //
 
@@ -29,8 +27,7 @@ Route::resources([
 ]);
 
 Route::middleware(['auth'])->group(function () {
-  Route::get('/home',[App\Http\Controllers\HomeController::class,'index'])->name('home');
-  Route::resource('students', StudentController::class);
-  //AdminIndex
-  
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('students', StudentController::class);
+    //AdminIndex
 });
