@@ -145,9 +145,6 @@ class StudentResultController extends Controller
                 ->with('filteredClass', $filteredClass)
                 ->with('subjectName', $subjectName); // Pass subjectName to the view
         }
-
-
-
         return view('manageStudentResult.AddStudentResult', compact('classes', 'subjectName'));
     }
 
@@ -192,10 +189,6 @@ class StudentResultController extends Controller
         //dd($subjectID);
         return view('manageStudentResult.EditStudentResult', compact('classes', 'filteredClass', 'subjectName', 'subjectID'));
     }
-
-
-
-
 
     public function updateResult(Request $request)
     {
