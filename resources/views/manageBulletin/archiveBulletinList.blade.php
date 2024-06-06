@@ -7,10 +7,13 @@
                 <h2><b>List of archive bulletin</b></h2>
             </div>
             <div class="col-md-6 mt-4 d-flex justify-content-end align-items-center">
-                <!--Only authorised users can see ADD button -->
+                <!--Only authorised users can see ADD and ARCHIVE button -->
                 @if (auth()->user()->role == 'admin' || auth()->user()->role == 'teacher')
                     <a href="{{ route('manageBulletin.newBulletin') }}">
                         <button type="button" class="btn" style="background-color:#647687; color:white;">Add</button>
+                    </a>
+                    <a href="{{ route('manageBulletin.archiveList') }}">
+                        <button type="button" class="btn" style="background-color:#647687; color:white;">Archive</button>
                     </a>
                 @endif
             </div>
@@ -22,6 +25,7 @@
                         <th style="width: 20%">Title</th>
                         <th style="width: 20%">Category</th>
                         <th style="width: 40%">Message</th>
+                    
                         <th style="width: 10%">Actions</th>
                     </tr>
                 </thead>
@@ -33,9 +37,6 @@
                             <td>{{ $bulletin->bulletinMessage }}</td>
                             
                             <td>
-                                <!--Accessible by all users-->
-                                <a href="{{ route('manageBulletin.viewBulletin', ['manageBulletin' => $bulletin['id']]) }}"><box-icon
-                                        name='info-circle'></box-icon></a>
                                 <!--Only accessed by staffs-->
                                 @if (auth()->user()->role == 'admin' || auth()->user()->role == 'teacher')
                                     <a href="{{ route('manageBulletin.editBulletin', ['manageBulletin' => $bulletin['id']]) }}"><box-icon
