@@ -86,7 +86,7 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('manageBulletin.showBulletin') }}">KAFA Bulletin</a>
-                </li>F
+                </li>
                 @if (auth()->user()->role == 'user')
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('manageStdIDVerification.index') }}">Student Registration</a> <!--only viewed for staff-->
