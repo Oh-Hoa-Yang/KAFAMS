@@ -10,18 +10,12 @@ class bulletinController extends Controller
 {
     public function bulletinList()
     {
-        $today = Carbon::today();
-        /*$datas = Bulletin::where('activityDate', '>=', $today) //Only retrieve data for date later than today
+        /*$today = Carbon::today();
+        $datas = Bulletin::where('activityDate', '>=', $today) //Only retrieve data for date later than today
             ->orderBy('activityDate', 'asc') //Sort by date in ascending order
             ->paginate(8);*/
 
         return view('manageBulletin.showBulletin', compact('datas'));
-    }
-    
-
-    public function newBulletin()
-    {
-        return view('manageBulletin.addBulletin');
     }
 
     public function viewBulletin($id)
@@ -32,15 +26,12 @@ class bulletinController extends Controller
             ->get(['id', 'bulletin_ID']);
 
         return view('manageBulletin.showBulletinDetails', compact('bulletin'));
-
     }
-
-    public function editBulletin($id)
+    
+    public function newBulletin()
     {
-        $bulletin = Bulletin::find($id)->toArray();
-        return view('manageBulletin.editBulletin', compact('bulletin'));
+        return view('manageBulletin.addBulletin');
     }
-
 
     public function storeNewBullettin(Request $request)
     {
@@ -50,6 +41,17 @@ class bulletinController extends Controller
             ->with('success', 'New bulletin successfully created!');
     }
 
+    public function archiveList(Request $request)
+    {
+    
+
+    }
+
+    public function editBulletin($id)
+    {
+        $bulletin = Bulletin::find($id)->toArray();
+        return view('manageBulletin.editBulletin', compact('bulletin'));
+    }
 
     public function updateBulletin(Request $request, $id)
     {
@@ -62,5 +64,11 @@ class bulletinController extends Controller
         } else {
         }
     }
-      
+
+    public function deleteBulletin(Bulletin $manageBulletin)
+    {
+        $manageBulletin->delete();
+        return redirect()->route('manageBulletin.archiveList')->with('success', 'Bulletin successfully deleted!');
+        
+    }   
 }

@@ -22,10 +22,11 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th style="width: 20%">Title</th>
+                        <th style="width: 30%">Title</th>
                         <th style="width: 20%">Category</th>
                         <th style="width: 40%">Message</th>
-                    
+                        <th style="width: 20%">Posted</th>
+                        <th style="width: 20%">Last update</th>
                         <th style="width: 10%">Actions</th>
                     </tr>
                 </thead>
@@ -35,7 +36,8 @@
                             <td>{{ $bulletin->bulletinTitle }}</td>
                             <td>{{ $bulletin->bulletinCategory }}</td>
                             <td>{{ $bulletin->bulletinMessage }}</td>
-                            
+                            <td>{{ $bulletin->created_at }}</td>
+                            <td>{{ $bulletin->updated_at }}</td>
                             <td>
                                 <!--Only accessed by staffs-->
                                 @if (auth()->user()->role == 'admin' || auth()->user()->role == 'teacher')
@@ -47,7 +49,7 @@
                                         <box-icon name='trash' type='solid'></box-icon>
                                     </a>
                                     <form id="delete-form-{{ $bulletin->id }}"
-                                        action="{{ route('manageBulletin.destroy', ['manageBulletin' => $bulletin->id]) }}"
+                                        action="{{ route('manageBulletin.deleteBulletin', ['manageBulletin' => $bulletin->id]) }}"
                                         method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')
