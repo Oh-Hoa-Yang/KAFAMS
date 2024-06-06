@@ -66,7 +66,7 @@
         </div>
     </div>
 
-    <div style="position: fixed; left: 50%; transform: translate(-50%, -50%);)">
+    <div style="position: fixed; left: 50%; transform: translate(-50%, -50%);">
         @if (session('failure'))
             <div class="alert alert-danger">
                 {{ session('failure') }}
