@@ -14,18 +14,18 @@
             @method('PUT')
             <div class="row">
                 <div class="col-md-6">
-                <div class="form-group row m-3">
-                    <label for="bulletinCategory" class="col-sm-4 col-form-label">Category</label>
-                    <div class="col-sm-8">
-                        <select class="form-control" id="bulletin_Category" name="bulletinCategory">
-                            <option value="" disabled>Please choose</option>
-                            <option value="general" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'general' ? 'selected' : '' }}>General</option>
-                            <option value="academic" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'academic' ? 'selected' : '' }}>Academic</option>
-                            <option value="studentActivity" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'studentActivity' ? 'selected' : '' }}>Student Activity</option>
-                            <option value="others" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'others' ? 'selected' : '' }}>Others</option>
-                        </select>
-                    </div>
-                    
+                    <div class="form-group row m-3">
+                        <label for="bulletinCategory" class="col-sm-4 col-form-label">Category</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="bulletin_Category" name="bulletinCategory">
+                                <option value="" disabled>Please choose</option>
+                                <option value="general" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'general' ? 'selected' : '' }}>General</option>
+                                <option value="academic" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'academic' ? 'selected' : '' }}>Academic</option>
+                                <option value="studentActivity" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'studentActivity' ? 'selected' : '' }}>Student Activity</option>
+                                <option value="others" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'others' ? 'selected' : '' }}>Others</option>
+                            </select>
+                        </div>
+                    </div>    
                     <div class="form-group row m-3">
                         <label for="bulletinTitle" class="col-sm-4 col-form-label">Title</label>
                         <div class="col-sm-8">

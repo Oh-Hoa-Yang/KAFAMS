@@ -45,15 +45,9 @@ class bulletinController extends Controller
     public function archiveList(Request $request)
     {
         $user = Auth::user();
-        $archivedBulletins = [];
 
-        if ($user->role === 'admin') {
-            // Admin can view all bulletins, including archived ones
-            $archivedBulletins = Bulletin::paginate(8);
-        } else {
-            // Teachers can only view their own bulletins, including archived ones
-            $archivedBulletins = Bulletin::where('user_id', $user->id)->paginate(8);
-        }
+        // Both admin and teacher can view all bulletins
+        $archivedBulletins = Bulletin::paginate(8);
 
         return view('manageBulletin.archiveBulletinList', compact('archivedBulletins'));
     }

@@ -53,6 +53,8 @@ Route::get('/bulletins/archive', [bulletinController::class, 'archiveList'])->na
 Route::delete('/bulletins/{bulletin}', [bulletinController::class, 'deleteBulletin'])->name('manageBulletin.deleteBulletin');
 Route::get('/manageBulletin/editBulletin/{id}', [bulletinController::class, 'editBulletin'])->name('manageBulletin.editBulletin');
 Route::put('/bulletins/{id}', [bulletinController::class, 'updateBulletin'])->name('manageBulletin.updateBulletin');
+Route::get('/bulletins/show', [bulletinController::class, 'showBulletin'])->name('manageBulletin.showBulletin');
+
 
 
 

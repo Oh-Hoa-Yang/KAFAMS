@@ -9,11 +9,14 @@
             <div class="col-md-6 mt-4 d-flex justify-content-end align-items-center">
                 <!--Only authorised users can see ADD and ARCHIVE button -->
                 @if (auth()->user()->role == 'admin' || auth()->user()->role == 'teacher')
+                    <a href="{{ route('manageBulletin.bulletinList') }}" style="margin-right: 10px; margin-top: 10px;">
+                            <box-icon name='left-arrow' type='solid' color='black'></box-icon>
+                    </a>
                     <a href="{{ route('manageBulletin.newBulletin') }}">
-                        <button type="button" class="btn" style="background-color:#647687; color:white;">Add</button>
+                        <button type="button" class="btn" style="background-color:#647687; color:white; width:100px; margin-right: 10px;">Add</button>
                     </a>
                     <a href="{{ route('manageBulletin.archiveList') }}">
-                        <button type="button" class="btn" style="background-color:#647687; color:white;">Archive</button>
+                        <button type="button" class="btn" style="background-color:#647687; color:white; width:100px;">Archive</button>
                     </a>
                 @endif
             </div>
