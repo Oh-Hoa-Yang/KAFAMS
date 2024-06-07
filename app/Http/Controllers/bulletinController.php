@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Bulletin;
 use Carbon\Carbon;
 
@@ -43,7 +44,18 @@ class bulletinController extends Controller
 
     public function archiveList(Request $request)
     {
-        return view('manageBulletin.archiveList');
+        $user = Auth::user();
+        $archivedBulletins = [];
+
+        if ($user->role === 'admin') {
+            // Admin can view all bulletins, including archived ones
+            $archivedBulletins = Bulletin::paginate(8);
+        } else {
+            // Teachers can only view their own bulletins, including archived ones
+            $archivedBulletins = Bulletin::where('user_id', $user->id)->paginate(8);
+        }
+
+        return view('manageBulletin.archiveBulletinList', compact('archivedBulletins'));
     }
 
     public function editBulletin($id)
@@ -64,10 +76,10 @@ class bulletinController extends Controller
         }
     }
 
-    public function deleteBulletin(Bulletin $manageBulletin)
+    public function deleteBulletin(Request $request, Bulletin $bulletin)
     {
-        $manageBulletin->delete();
-        return redirect()->route('manageBulletin.archiveList')->with('success', 'Bulletin successfully deleted!');
+        $bulletin->delete();
         
+        return redirect()->route('manageBulletin.archiveList')->with('success', 'Bulletin successfully deleted!');  
     }   
 }

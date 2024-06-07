@@ -9,7 +9,7 @@
                 <h2><b>Edit Bulletin</b></h2>
             </div>
         </div>
-        <form action="{{ route('manageBulletin.updateBulletin', ['manageBulletin' => $bulletin['id']]) }}" method="POST">
+        <form action="{{ route('manageBulletin.updateBulletin', ['id' => $bulletin['id']]) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="row">
@@ -18,14 +18,13 @@
                     <label for="bulletinCategory" class="col-sm-4 col-form-label">Category</label>
                     <div class="col-sm-8">
                         <select class="form-control" id="bulletin_Category" name="bulletinCategory">
-                            <option value="" disabled {{ empty($bulletin->bulletinCategory) ? 'selected' : '' }}>Please choose</option>
-                            <option value="general" {{ $bulletin->bulletinCategory == 'general' ? 'selected' : '' }}>General</option>
-                            <option value="academic" {{ $bulletin->bulletinCategory == 'academic' ? 'selected' : '' }}>Academic</option>
-                            <option value="studentActivity" {{ $bulletin->bulletinCategory == 'studentActivity' ? 'selected' : '' }}>Student Activity</option>
-                            <option value="others" {{ $bulletin->bulletinCategory == 'others' ? 'selected' : '' }}>Others</option>
+                            <option value="" disabled>Please choose</option>
+                            <option value="general" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'general' ? 'selected' : '' }}>General</option>
+                            <option value="academic" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'academic' ? 'selected' : '' }}>Academic</option>
+                            <option value="studentActivity" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'studentActivity' ? 'selected' : '' }}>Student Activity</option>
+                            <option value="others" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'others' ? 'selected' : '' }}>Others</option>
                         </select>
                     </div>
-                </div>
                     
                     <div class="form-group row m-3">
                         <label for="bulletinTitle" class="col-sm-4 col-form-label">Title</label>
