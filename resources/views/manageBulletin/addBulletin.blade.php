@@ -18,10 +18,10 @@
                         <div class="col-sm-8">
                             <select class="form-control" id="bulletin_Category" name="bulletinCategory">
                                 <option value="" disabled selected>Please choose</option>
-                                <option value="general">General</option>
-                                <option value="academic">Academic</option>
-                                <option value="studentActivity">Student Activity</option>
-                                <option value="others">Others</option>
+                                <option value="General">General</option>
+                                <option value="Academic">Academic</option>
+                                <option value="Student Activity">Student Activity</option>
+                                <option value="Others">Others</option>
                             </select>
                         </div>
                     </div>

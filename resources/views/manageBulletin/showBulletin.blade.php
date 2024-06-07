@@ -23,7 +23,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th style="width: 100%">Title</th>
+                        <th style="width: 100%">All Bulletins</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,7 +38,8 @@
                     @endforeach
                 </tbody>
             </table>
-            <!-- Pagination links -->
+        </div>
+        <div style="text-align: right;">
             {{ $bulletins->links() }}
         </div>
     </div>

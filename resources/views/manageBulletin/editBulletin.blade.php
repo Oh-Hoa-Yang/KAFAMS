@@ -19,10 +19,10 @@
                         <div class="col-sm-8">
                             <select class="form-control" id="bulletin_Category" name="bulletinCategory">
                                 <option value="" disabled>Please choose</option>
-                                <option value="general" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'general' ? 'selected' : '' }}>General</option>
-                                <option value="academic" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'academic' ? 'selected' : '' }}>Academic</option>
-                                <option value="studentActivity" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'studentActivity' ? 'selected' : '' }}>Student Activity</option>
-                                <option value="others" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'others' ? 'selected' : '' }}>Others</option>
+                                <option value="General" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'general' ? 'selected' : '' }}>General</option>
+                                <option value="Academic" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'academic' ? 'selected' : '' }}>Academic</option>
+                                <option value="Student Activity" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'studentActivity' ? 'selected' : '' }}>Student Activity</option>
+                                <option value="Others" {{ old('bulletinCategory', $bulletin['bulletinCategory']) == 'others' ? 'selected' : '' }}>Others</option>
                             </select>
                         </div>
                     </div>    

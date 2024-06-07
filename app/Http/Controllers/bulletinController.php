@@ -13,8 +13,8 @@ class bulletinController extends Controller
     {
         $today = Carbon::today();
         $bulletins = Bulletin::where('created_at', '>=', $today) //Only retrieve data for date later than today
-            ->orderBy('created_at', 'asc') //Sort by date in ascending order
-            ->paginate(8);
+            ->orderBy('created_at', 'desc') //Sort by date in ascending order
+            ->paginate(15);
 
         return view('manageBulletin.showBulletin', compact('bulletins'));
     }
@@ -47,7 +47,7 @@ class bulletinController extends Controller
         $user = Auth::user();
 
         // Both admin and teacher can view all bulletins
-        $archivedBulletins = Bulletin::paginate(8);
+        $archivedBulletins = Bulletin::orderBy('created_at', 'desc')->paginate(8);
 
         return view('manageBulletin.archiveBulletinList', compact('archivedBulletins'));
     }
