@@ -6,6 +6,7 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentResultController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\bulletinController;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -43,3 +44,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('students', StudentController::class);
     //AdminIndex
 });
+
+Route::get('/bulletins', [bulletinController::class, 'bulletinList'])->name('manageBulletin.bulletinList');
+Route::get('/bulletin/{id}', [bulletinController::class, 'viewBulletin'])->name('manageBulletin.viewBulletin');
+Route::get('/bulletins/new', [bulletinController::class, 'newBulletin'])->name('manageBulletin.newBulletin');
+Route::post('/bulletins', [bulletinController::class, 'storeNewBulletin'])->name('manageBulletin.storeNewBulletin');
+Route::get('/bulletins/archive', [bulletinController::class, 'archiveList'])->name('manageBulletin.archiveList');
+
+

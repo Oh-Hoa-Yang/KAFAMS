@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row mb-4">
             <div class="col-md-6">
-                <h2><b>List of archive bulletin</b></h2>
+                <h2><b>KAFA bulletin</b></h2>
             </div>
             <div class="col-md-6 mt-4 d-flex justify-content-end align-items-center">
                 <!--Only authorised users can see ADD and ARCHIVE button -->
@@ -18,15 +18,31 @@
                 @endif
             </div>
         </div>
-        <div class="">
 
-
-
-
-
-
-
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="width: 100%">Title</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($bulletins as $bulletin)
+                    <tr style="height: 50px; vertical-align:middle;">
+                        <td>
+                            <a href="{{ route('manageBulletin.viewBulletin', ['id' => $bulletin->id]) }}">
+                                {{ $bulletin->bulletinTitle }}
+                            </a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <!-- Pagination links -->
+            {{ $bulletins->links() }}
         </div>
+    </div>
+
     </div>
 
     <div style="position: fixed; left: 50%; transform: translate(-50%, -50%);">

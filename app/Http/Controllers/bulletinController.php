@@ -10,21 +10,17 @@ class bulletinController extends Controller
 {
     public function bulletinList()
     {
-        /*$today = Carbon::today();
-        $datas = Bulletin::where('activityDate', '>=', $today) //Only retrieve data for date later than today
-            ->orderBy('activityDate', 'asc') //Sort by date in ascending order
-            ->paginate(8);*/
+        $today = Carbon::today();
+        $bulletins = Bulletin::where('created_at', '>=', $today) //Only retrieve data for date later than today
+            ->orderBy('created_at', 'asc') //Sort by date in ascending order
+            ->paginate(8);
 
-        return view('manageBulletin.showBulletin', compact('datas'));
+        return view('manageBulletin.showBulletin', compact('bulletins'));
     }
 
     public function viewBulletin($id)
     {
         $bulletin = Bulletin::findOrFail($id); //Find bulletin ID
-
-        $bulletin = Bulletin::where('bulletin_ID', $bulletin->id) 
-            ->get(['id', 'bulletin_ID']);
-
         return view('manageBulletin.showBulletinDetails', compact('bulletin'));
     }
     
@@ -33,9 +29,13 @@ class bulletinController extends Controller
         return view('manageBulletin.addBulletin');
     }
 
-    public function storeNewBullettin(Request $request)
+    public function storeNewBulletin(Request $request)
     {
-        Bulletin::create($request->all());
+        Bulletin::create([
+            'bulletinCategory' => $request->bulletinCategory,
+            'bulletinTitle' => $request->bulletinTitle,
+            'bulletinMessage' => $request->bulletinMessage,
+        ]);
 
         return redirect()->route('manageBulletin.bulletinList')
             ->with('success', 'New bulletin successfully created!');
@@ -43,8 +43,7 @@ class bulletinController extends Controller
 
     public function archiveList(Request $request)
     {
-    
-
+        return view('manageBulletin.archiveList');
     }
 
     public function editBulletin($id)

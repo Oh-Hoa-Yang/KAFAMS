@@ -85,7 +85,7 @@
                 @endif
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('manageBulletin.showBulletin') }}">KAFA Bulletin</a>
+                  <a class="nav-link" href="{{ route('manageBulletin.bulletinList') }}">KAFA Bulletin</a>
                 </li>
                 @if (auth()->user()->role == 'user')
                 <li class="nav-item">
