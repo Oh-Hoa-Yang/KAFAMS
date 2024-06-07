@@ -12,7 +12,7 @@
             <p class="card-text">{{ $bulletin->bulletinMessage }}</p>
             <p class="card-text"><small class="text-muted">Posted on: {{ $bulletin->created_at }}</small></p>
             <p class="card-text"><small class="text-muted">Last updated: {{ $bulletin->updated_at }}</small></p>
-            <a href="{{ route('manageBulletin.bulletinList') }}" class="btn btn-primary">Back</a>
+            <a href="{{ route('manageBulletin.bulletinList', ['category' => $bulletin->bulletinCategory]) }}" class="btn btn-primary">Back</a>
         </div>
     </div>
 </div>

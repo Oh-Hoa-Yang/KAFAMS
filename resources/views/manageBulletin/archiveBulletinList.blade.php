@@ -9,7 +9,7 @@
             <div class="col-md-6 mt-4 d-flex justify-content-end align-items-center">
                 <!--Only authorised users can see ADD and ARCHIVE button -->
                 @if (auth()->user()->role == 'admin' || auth()->user()->role == 'teacher')
-                    <a href="{{ route('manageBulletin.bulletinList') }}" style="margin-right: 10px; margin-top: 10px;">
+                    <a href="{{ route('manageBulletin.bulletinList', ['category' => 'General']) }}" style="margin-right: 10px; margin-top: 10px;">
                             <box-icon name='left-arrow' type='solid' color='black'></box-icon>
                     </a>
                     <a href="{{ route('manageBulletin.newBulletin') }}">

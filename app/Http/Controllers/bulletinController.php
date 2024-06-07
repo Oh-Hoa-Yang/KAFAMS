@@ -9,14 +9,20 @@ use Carbon\Carbon;
 
 class bulletinController extends Controller
 {
-    public function bulletinList()
+    public function bulletinList(Request $request)
     {
         $today = Carbon::today();
-        $bulletins = Bulletin::where('created_at', '>=', $today) //Only retrieve data for date later than today
-            ->orderBy('created_at', 'desc') //Sort by date in ascending order
+        $category = $request->query('category', session('bulletinCategory', 'General'));
+
+        // Store the selected category in the session
+        session(['bulletinCategory' => $category]);
+
+        $bulletins = Bulletin::where('created_at', '>=', $today) // Only retrieve data for date later than today
+            ->where('bulletinCategory', $category) // Filter by category
+            ->orderBy('created_at', 'desc') // Sort by date in ascending order
             ->paginate(15);
 
-        return view('manageBulletin.showBulletin', compact('bulletins'));
+        return view('manageBulletin.showBulletin', compact('bulletins', 'category'));
     }
 
     public function viewBulletin($id)
@@ -66,7 +72,6 @@ class bulletinController extends Controller
         if ($updated) {
             return redirect()->route('manageBulletin.archiveList')
                 ->with('success', "Successfully edited bulletin.");
-        } else {
         }
     }
 

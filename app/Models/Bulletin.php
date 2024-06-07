@@ -12,10 +12,7 @@ class Bulletin extends Model
         'bulletinCategory',
         'bulletinTitle',
         'bulletinMessage',
+        'created_at',
+        'updated_at',
     ];
-
-    /*public function participations()
-    {
-        return $this->hasMany(Participation::class, 'activity_id', 'id');
-    }*/
 }
