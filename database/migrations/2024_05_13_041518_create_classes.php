@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('classes', function (Blueprint $table) {
-            $table->id();
+            $table->id('classID');
+            $table->unsignedBigInteger('studentID');
+            $table->string('className');
+            $table->string('studentName');
             $table->timestamps();
         });
     }
