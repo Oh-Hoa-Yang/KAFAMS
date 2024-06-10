@@ -23,3 +23,7 @@ Run "php artisan migrate:fresh --seed" to seed database and fetch/execute migrat
 
 ## Post-Post-Setup
 Run "php artisan storage:link" ONCE
+
+## Subject & Class seeder
+Run "php artisan db:seed --class=ClassSeeder"
+Run "php artisan db:seed --class=SubjectSeeder"
