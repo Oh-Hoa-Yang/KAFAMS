@@ -14,11 +14,12 @@ class DatabaseSeeder extends Seeder
    */
   public function run(): void
   {
-    $this->call([
+    $this->call([       //add other seeders here!
       UserSeeder::class,
+      ClassSeeder::class,
+      SubjectSeeder::class,
     ]);
     $this->activitySeeder();
-    $this->studentSeeder();
   }
 
   public function activitySeeder() //Seeds data into Activities table, more than 8 to test pagination function
@@ -108,28 +109,6 @@ class DatabaseSeeder extends Seeder
 
     foreach ($datas as $data) {
       DB::table('activities')->insert($data);
-    }
-  }
-
-  public function studentSeeder() //Seeds data into Students table
-  {
-    $datas = [
-      [
-        'user_id' => '3',
-        'stdName' => 'Student 1',
-      ],
-      [
-        'user_id' => '3',
-        'stdName' => 'Student 2',
-      ],
-      [
-        'user_id' => '3',
-        'stdName' => 'Student 3',
-      ],
-    ];
-
-    foreach ($datas as $data) {
-      DB::table('students')->insert($data);
     }
   }
 }
