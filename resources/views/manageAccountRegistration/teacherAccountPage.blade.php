@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@if (auth()->user()->role != 'admin' && auth()->user()->role != 'teacher')
+    {{ abort(403, 'Unauthorized action.') }}
+@endif
 @section('content')
   <div class="container">
     <div class="row mb-4">
