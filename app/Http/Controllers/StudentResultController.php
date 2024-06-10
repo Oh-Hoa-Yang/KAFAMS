@@ -11,7 +11,7 @@ class StudentResultController extends Controller
 {
     public function viewStudentResult()
     {
-        $studentID = 109;
+        $studentID = 100;
         $student = DB::table('classes')
             ->select('studentName', 'className')
             ->where('studentID', $studentID)
