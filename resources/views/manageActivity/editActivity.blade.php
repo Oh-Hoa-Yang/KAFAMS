@@ -1,4 +1,5 @@
 @extends('layouts.app')
+{{-- Control user access --}}
 @if (auth()->user()->role != 'admin' && auth()->user()->role != 'teacher')
     {{ abort(403, 'Unauthorized action.') }}
 @endif
@@ -9,6 +10,7 @@
                 <h2><b>Edit Activity</b></h2>
             </div>
         </div>
+        {{-- Save action --}}
         <form action="{{ route('manageActivity.update', ['manageActivity' => $activity['id']]) }}" method="POST">
             @csrf
             @method('PUT')

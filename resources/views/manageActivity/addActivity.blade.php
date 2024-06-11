@@ -1,4 +1,5 @@
 @extends('layouts.app')
+{{-- Control user access --}}
 @if (auth()->user()->role != 'admin' && auth()->user()->role != 'teacher')
     {{ abort(403, 'Unauthorized action.') }}
 @endif
@@ -9,7 +10,8 @@
                 <h2><b>Add Activity</b></h2>
             </div>
         </div>
-        <form action="{{ route('manageActivity.store') }}" method="POST">
+        {{-- Submission button --}}
+        <form action="{{ route('manageActivity.store') }}" method="POST"> 
             @csrf
             <div class="row">
                 <div class="col-md-6">

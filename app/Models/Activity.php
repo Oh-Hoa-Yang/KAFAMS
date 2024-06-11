@@ -17,7 +17,7 @@ class Activity extends Model
         'endTime',
     ];
 
-    public function participations()
+    public function participations() //One participation has many activities
     {
         return $this->hasMany(Participation::class, 'activity_id', 'id');
     }

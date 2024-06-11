@@ -13,6 +13,7 @@ class Participation extends Model
         'activity_id',
         'student_id',
     ];
+    
     public function student() //Foreign key
     {
         return $this->belongsTo(Student::class);

@@ -39,7 +39,7 @@
                                 <!--Accessible by all users-->
                                 <a href="{{ route('manageActivity.show', ['manageActivity' => $activity['id']]) }}"><box-icon
                                         name='info-circle'></box-icon></a>
-                                <!--Only accessed by staffs-->
+                                <!--Only able to be accessed by staffs-->
                                 @if (auth()->user()->role == 'admin' || auth()->user()->role == 'teacher')
                                     <a href="{{ route('manageActivity.edit', ['manageActivity' => $activity['id']]) }}"><box-icon
                                             type='solid' name='pencil'></box-icon></a>

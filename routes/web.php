@@ -17,8 +17,6 @@ Auth::routes();
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('students/admin', [StudentController::class, 'indexAdmin'])->name('students.indexAdmin'); //Don't shift this to the group function
 
-//
-
 Route::post('manageActivity/{activity}/participate', [ActivityController::class, 'participate'])
     ->name('manageActivity.participate');
 
