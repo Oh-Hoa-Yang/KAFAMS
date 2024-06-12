@@ -11,12 +11,14 @@ class StudentResultController extends Controller
 {
     public function viewStudentResult()
     {
+        //retrieve student name and class for result view
         $studentID = 100;
         $student = DB::table('classes')
             ->select('studentName', 'className')
             ->where('studentID', $studentID)
             ->first();
 
+        //retrieve results mark and grade for each subject
         $results = DB::table('results')
             ->join('subjects', 'results.subjectID', '=', 'subjects.subjectID')
             ->select('subjects.subjectName', 'subjects.subjectExamDate', 'results.resultMark', 'results.resultGrade')
@@ -28,7 +30,6 @@ class StudentResultController extends Controller
 
     public function viewSubjectList()
     {
-
         //retrieve subjects data from db (subjects table) & display it in SubjectList page
         $subjects = DB::table('subjects')->select('subjectID', 'subjectName', 'subjectExamDate')->paginate(10);
 
@@ -38,6 +39,7 @@ class StudentResultController extends Controller
 
     public function newSubject()
     {
+        //retrieve new subject added in subject list
         return view('manageStudentResult.AddSubject');
     }
 
@@ -64,22 +66,24 @@ class StudentResultController extends Controller
     }
 
     public function deleteSubject($id)
-    {
+    {    
         $subject = DB::table('subjects')->where('subjectID', $id)->first();
+
+        //check if the subject exists
         if (!$subject) {
             return redirect()->route('manageStudentResult.viewSubjectList')->with('error', 'Subject not found');
         }
 
+        // Delete the subject record from the subjects table
         DB::table('subjects')->where('subjectID', $id)->delete();
 
+        // Redirect to the viewSubjectList route with a success message
         return redirect()->route('manageStudentResult.viewSubjectList')->with('success', 'Subject deleted successfully');
     }
-
 
     public function addResult(Request $request)
     {
         // Debugging: Check what data is being submitted
-        // dd($request->all());
         Log::info('Request data:', $request->all());
 
         // Validate request
@@ -114,10 +118,8 @@ class StudentResultController extends Controller
             ->with('success', 'Data successfully saved!');
     }
 
-
     public function viewStudentList(Request $request)
     {
-
         // Retrieve distinct classes for the selection dropdown
         $classes = DB::table('classes')->select('className')->distinct()->get();
 
@@ -132,7 +134,6 @@ class StudentResultController extends Controller
                 $subjectName = $subject->subjectName;
             }
         }
-
         // Fetch students based on selected class
         if ($request->has('classID') && $request->classID) {
             $filteredClass = DB::table('classes')
@@ -148,19 +149,19 @@ class StudentResultController extends Controller
         return view('manageStudentResult.AddStudentResult', compact('classes', 'subjectName'));
     }
 
-
-
     public function storeStudentResult()
     {
     }
 
     public function editResult(Request $request)
     {
+        // Retrieve distinct class names from the classes table
         $classes = DB::table('classes')->select('className')->distinct()->get();
         $subjectID = $request->query('subjectID');
         $subjectName = null;
 
         if ($subjectID) {
+            // Retrieve the subject record with the given subjectID from the subjects table
             $subject = DB::table('subjects')->where('subjectID', $subjectID)->first();
             if ($subject) {
                 $subjectName = $subject->subjectName;
@@ -185,8 +186,6 @@ class StudentResultController extends Controller
                 ->where('results.subjectID', $subjectID)
                 ->get();
         }
-
-
         return view('manageStudentResult.EditStudentResult', compact('classes', 'filteredClass', 'subjectName', 'subjectID'));
     }
 
@@ -221,7 +220,6 @@ class StudentResultController extends Controller
                     'updated_at' => now(),
                 ]);
         }
-
         return redirect()->route('manageStudentResult.viewSubjectList')
             ->with('success', 'Data successfully updated!');
     }
