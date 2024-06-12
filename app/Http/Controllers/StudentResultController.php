@@ -186,7 +186,7 @@ class StudentResultController extends Controller
                 ->get();
         }
 
-        //dd($subjectID);
+
         return view('manageStudentResult.EditStudentResult', compact('classes', 'filteredClass', 'subjectName', 'subjectID'));
     }
 
@@ -212,8 +212,7 @@ class StudentResultController extends Controller
             $resultGrade = $request->resultGrade[$studentID];
             $resultID = $request->resultID[$studentID];
 
-            // Update the result in the database
-            // Update the result in the database
+            // Update the result in the database  
             DB::table('results')
                 ->where('resultID', $resultID)
                 ->update([
