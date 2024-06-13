@@ -22,6 +22,7 @@
             </tr>
           </thead>
           <tbody>
+            {{-- Loop through each user in the $datas collection --}}
             @foreach ($datas as $user)
               <tr>
                 <td>{{ $user->name }}</td>
@@ -35,6 +36,7 @@
                     <i class="bi bi-pencil-fill"></i>
                   </button>
 
+                  {{-- Use 'form' to delete the teacher account --}}
                   <form action="{{ route('manageAccountRegistration.destroy', $user->id) }}" class="d-inline-grid" method="POST">
                     @csrf
                     @method('DELETE')
@@ -50,6 +52,7 @@
 
       </div>
 
+      {{-- Pagination links --}}
       <div class="d-flex flex-row-reverse">
         {{ $datas->links('') }}
     </div>
@@ -58,6 +61,8 @@
       </tbody>
       </table>
     </div>
+
+    {{-- Alert messages for success and failure --}}
     <div style="position: fixed; left: 50%; transform: translate(-50%, -50%);)">
       @if (session('failure'))
         <div class="alert alert-danger" role="alert">

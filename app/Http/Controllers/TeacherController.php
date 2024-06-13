@@ -62,6 +62,7 @@ class TeacherController extends Controller
             'role' => 'required|string',
         ]);
 
+        //Update the teacher's account with validated data
         $manageAccountRegistration->update([
             'name' => $validated['name'],
             'email' => $validated['email'],
